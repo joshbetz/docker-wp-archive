@@ -29,7 +29,12 @@ server {
 	}
 
 	location / {
-		try_files $uri /index.php?$args;
+		try_files $uri $uri/ /index.php?$args;
+	}
+
+	if (!-e $request_filename) {
+		# Add trailing slash to */wp-admin requests.
+		rewrite /wp-admin$ $scheme://$host$uri/ permanent;
 	}
 
 	location ~ \.php$ {
