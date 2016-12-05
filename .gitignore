@@ -1,4 +1,5 @@
 wp-content/uploads
+wp-config/secrets.php
 
 # Database
 .data
