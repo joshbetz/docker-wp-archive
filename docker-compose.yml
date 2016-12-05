@@ -4,8 +4,8 @@ php:
         - mysql
         - memcached
     volumes:
-        - "./wp-config:/var/www/html/wp-config"
         - "./wp-content:/var/www/html/wp-content"
+        - "./wp-config:/var/www/html/wp-config:ro"
     environment:
         WORDPRESS_DB_HOST: mysql:3306
         WORDPRESS_DB_PASSWORD: wordpress
@@ -15,6 +15,7 @@ php:
 nginx:
     image: nginx:mainline
     volumes:
+        - "./wp-content:/var/www/html/wp-content:ro"
         - ".docker/nginx.template:/etc/nginx/conf.d/wordpress.template:ro"
     volumes_from:
         - php:ro
