@@ -6,6 +6,8 @@ nginx:
 
 mysql:
     restart: on-failure
+    volumes:
+        - ".data:/var/lib/mysql"
 
 memcached:
     restart: on-failure
