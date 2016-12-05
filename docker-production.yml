@@ -1,0 +1,11 @@
+php:
+    restart: on-failure
+
+nginx:
+    restart: on-failure
+
+mysql:
+    restart: on-failure
+
+memcached:
+    restart: on-failure
