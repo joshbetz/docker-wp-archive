@@ -14,6 +14,8 @@ RUN curl -o wordpress.tar.gz -SL https://wordpress.org/wordpress-${WORDPRESS_VER
 	&& rm wordpress.tar.gz \
 	&& chown -R www-data:www-data /usr/src/wordpress
 
+COPY .docker/php.ini /usr/local/etc/php/conf.d/wordpress.ini
+
 COPY .docker/wp-config.php /usr/src/wordpress
 VOLUME /usr/src/wordpress
 WORKDIR /usr/src/wordpress
