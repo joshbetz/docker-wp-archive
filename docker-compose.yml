@@ -1,0 +1,38 @@
+php:
+    build: .
+    links:
+        - mysql
+        - memcached
+    volumes:
+        - "./wp-config:/var/www/html/wp-config"
+        - "./wp-content:/var/www/html/wp-content"
+    environment:
+        WORDPRESS_DB_HOST: mysql:3306
+        WORDPRESS_DB_PASSWORD: wordpress
+        WORDPRESS_DB_NAME: wordpress
+        WORDPRESS_DB_USER: wordpress
+
+nginx:
+    image: nginx:mainline
+    volumes:
+        - ".docker/nginx.template:/etc/nginx/conf.d/wordpress.template:ro"
+    volumes_from:
+        - php:ro
+    links:
+        - php
+    ports:
+        - "8000:80"
+    command: /bin/bash -c "envsubst '$$NGINX_HOST' < /etc/nginx/conf.d/wordpress.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+
+mysql:
+    image: mariadb
+    volumes:
+        - ".data:/var/lib/mysql"
+    environment:
+        MYSQL_ROOT_PASSWORD: wordpress
+        MYSQL_DATABASE: wordpress
+        MYSQL_USER: wordpress
+        MYSQL_PASSWORD: wordpress
+
+memcached:
+    image: memcached
