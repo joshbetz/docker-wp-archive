@@ -11,6 +11,9 @@ php:
         WORDPRESS_DB_PASSWORD: wordpress
         WORDPRESS_DB_NAME: wordpress
         WORDPRESS_DB_USER: wordpress
+        WP_DOMAIN: localhost:8000
+        WP_ADMIN_USER: josh
+        WP_EMAIL: j@joshbetz.com
 
 nginx:
     image: nginx:mainline
@@ -27,6 +30,8 @@ nginx:
 
 mysql:
     image: mariadb
+    ports:
+        - "3306:3306"
     environment:
         MYSQL_ROOT_PASSWORD: wordpress
         MYSQL_DATABASE: wordpress

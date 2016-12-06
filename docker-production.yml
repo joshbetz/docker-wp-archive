@@ -1,5 +1,7 @@
 php:
     restart: on-failure
+    environment:
+        WP_DOMAIN: betz.mx
 
 nginx:
     restart: on-failure
