@@ -1,4 +1,6 @@
 <?php
+define('SUNRISE', true);
+
 if ( ! @constant('WP_INSTALLING') ) {
 	define('WP_ALLOW_MULTISITE', true);
 	define('MULTISITE', true);
