@@ -1,5 +1,18 @@
 FROM php:fpm
 
+# Install memcached for PHP 7
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    libmemcached-dev \
+    curl
+
+RUN curl -L -o /tmp/memcached.tar.gz "https://github.com/php-memcached-dev/php-memcached/archive/php7.tar.gz" \
+    && mkdir -p /usr/src/php/ext/memcached \
+    && tar -C /usr/src/php/ext/memcached -zxvf /tmp/memcached.tar.gz --strip 1 \
+    && docker-php-ext-configure memcached \
+    && docker-php-ext-install memcached \
+    && rm /tmp/memcached.tar.gz
+
 # install the PHP extensions we need for WordPress
 RUN apt-get update && apt-get install -y mariadb-client libpng12-dev libjpeg-dev && rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
