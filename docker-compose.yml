@@ -25,7 +25,7 @@ nginx:
     links:
         - php
     ports:
-        - "80:80"
+        - "8000:80"
     command: /bin/bash -c "envsubst '$$NGINX_PORT' < /etc/nginx/conf.d/wordpress.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     environment:
         NGINX_PORT: 80
