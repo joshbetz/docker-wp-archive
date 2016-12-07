@@ -5,6 +5,10 @@ php:
 
 nginx:
     restart: on-failure
+    ports:
+        - "8000:80"
+    environment:
+        NGINX_PORT: 8000
 
 mysql:
     restart: on-failure

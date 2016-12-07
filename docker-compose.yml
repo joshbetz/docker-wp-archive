@@ -11,7 +11,7 @@ php:
         WORDPRESS_DB_PASSWORD: wordpress
         WORDPRESS_DB_NAME: wordpress
         WORDPRESS_DB_USER: wordpress
-        WP_DOMAIN: localhost:8000
+        WP_DOMAIN: localhost.localdomain
         WP_ADMIN_USER: josh
         WP_EMAIL: j@joshbetz.com
 
@@ -25,8 +25,10 @@ nginx:
     links:
         - php
     ports:
-        - "8000:80"
-    command: /bin/bash -c "envsubst '$$NGINX_HOST' < /etc/nginx/conf.d/wordpress.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+        - "80:80"
+    command: /bin/bash -c "envsubst '$$NGINX_PORT' < /etc/nginx/conf.d/wordpress.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    environment:
+        NGINX_PORT: 80
 
 mysql:
     image: mariadb
