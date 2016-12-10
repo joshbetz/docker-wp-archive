@@ -1,0 +1,6 @@
+[submodule "wp-content/mu-plugins/memcached"]
+	path = wp-content/mu-plugins/memcached
+	url = https://github.com/tollmanz/wordpress-pecl-memcached-object-cache.git
+[submodule "wp-content/mu-plugins/mercator"]
+	path = wp-content/mu-plugins/mercator
+	url = https://github.com/humanmade/Mercator.git
