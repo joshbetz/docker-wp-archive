@@ -1,7 +1,6 @@
 <?php
-define('SUNRISE', true);
-
 if ( ! @constant('WP_INSTALLING') ) {
+	define('SUNRISE', true);
 	define('WP_ALLOW_MULTISITE', true);
 	define('MULTISITE', true);
 	define('SUBDOMAIN_INSTALL', true);
