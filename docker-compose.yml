@@ -11,7 +11,7 @@ php:
         WORDPRESS_DB_PASSWORD: wordpress
         WORDPRESS_DB_NAME: wordpress
         WORDPRESS_DB_USER: wordpress
-        WP_DOMAIN: localhost.localdomain
+        WP_DOMAIN: localhost:8000
         WP_ADMIN_USER: josh
         WP_EMAIL: j@joshbetz.com
 
