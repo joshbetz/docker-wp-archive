@@ -33,7 +33,8 @@ function handle_redirect() {
 	}
 
 	// Don't redirect REST API requests
-	if ( 0 === strpos( $_SERVER['REQUEST_URI'], parse_url( rest_url(), PHP_URL_PATH ) ) ) {
+	// TODO: Temporarily disabled, fix it?
+	if ( false && 0 === strpos( $_SERVER['REQUEST_URI'], parse_url( rest_url(), PHP_URL_PATH ) ) ) {
 		return;
 	}
 
@@ -70,8 +71,8 @@ function handle_redirect() {
 		if ( $_SERVER['HTTP_HOST'] !== $mapping->get_domain() ) {
 			wp_redirect( 'http://' . $mapping->get_domain() . esc_url_raw( $_SERVER['REQUEST_URI'] ), 301 );
 			exit;
-		} else {
-			break;
 		}
+		
+		break;
 	}
 }
