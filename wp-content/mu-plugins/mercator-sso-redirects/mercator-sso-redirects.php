@@ -31,6 +31,11 @@ function handle_redirect() {
 	if ( ! defined( 'SUNRISE' ) || ! SUNRISE ) {
 		return;
 	}
+	
+	// Don't redirect WP_CLI
+	if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		return;
+	}
 
 	// Don't redirect REST API requests
 	// TODO: Temporarily disabled, fix it?
