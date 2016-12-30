@@ -2,9 +2,12 @@ php:
     restart: on-failure
     environment:
         WP_DOMAIN: betz.mx
+        WP_PRODUCTION: true
 
 nginx:
     restart: on-failure
+    ports:
+        - "8000:8000"
 
 mysql:
     restart: on-failure
