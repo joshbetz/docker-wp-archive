@@ -17,6 +17,14 @@ server {
 		access_log off;
 	}
 
+	# upload config
+	location ~ ^/wp-admin/(media-upload|media-new|async-upload|admin|admin-post|themes).php$ {
+		client_max_body_size 128M;
+		fastcgi_pass   php:9000;
+		fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		include        fastcgi_params;
+	}
+
 	location ~ ^/wp-content/(.*)$ {
 		alias /var/www/html/wp-content/$1;
 		expires 7d;
