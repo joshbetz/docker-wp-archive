@@ -4,7 +4,7 @@ services:
         restart: on-failure
         environment:
             WP_DOMAIN: betz.mx
-            WP_PRODUCTION: true
+            WP_PRODUCTION: 'true'
             WP_ADMIN_USER: josh
             WP_EMAIL: j@joshbetz.com
 
