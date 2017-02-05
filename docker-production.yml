@@ -10,8 +10,6 @@ services:
 
     nginx:
         restart: on-failure
-        ports:
-            - "8000:8000"
 
     mysql:
         restart: on-failure
