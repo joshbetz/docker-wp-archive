@@ -1,20 +1,22 @@
-php:
-    restart: on-failure
-    environment:
-        WP_DOMAIN: betz.mx
-        WP_PRODUCTION: true
-        WP_ADMIN_USER: josh
-        WP_EMAIL: j@joshbetz.com
+version: '2'
+services:
+    php:
+        restart: on-failure
+        environment:
+            WP_DOMAIN: betz.mx
+            WP_PRODUCTION: true
+            WP_ADMIN_USER: josh
+            WP_EMAIL: j@joshbetz.com
 
-nginx:
-    restart: on-failure
-    ports:
-        - "8000:8000"
+    nginx:
+        restart: on-failure
+        ports:
+            - "8000:8000"
 
-mysql:
-    restart: on-failure
-    volumes:
-        - ".data:/var/lib/mysql"
+    mysql:
+        restart: on-failure
+        volumes:
+            - ".data:/var/lib/mysql"
 
-memcached:
-    restart: on-failure
+    memcached:
+        restart: on-failure
