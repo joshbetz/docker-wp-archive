@@ -24,10 +24,6 @@ server {
 		fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
 		include        fastcgi_params;
 	}
-	
-	location ~ ^/wp-admin/ {
-		add_header Cache-Control "no-cache";
-	}
 
 	location ~ ^/wp-content/(.*)$ {
 		alias /var/www/html/wp-content/$1;
