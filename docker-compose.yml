@@ -13,9 +13,9 @@ services:
             WORDPRESS_DB_PASSWORD: wordpress
             WORDPRESS_DB_NAME: wordpress
             WORDPRESS_DB_USER: wordpress
-            WP_DOMAIN: wp.local:8000
+            WP_DOMAIN: localhost.localdomain:8000
             WP_ADMIN_USER: wordpress
-            WP_EMAIL: wordpress@wp.local
+            WP_EMAIL: wordpress@example.com
 
     nginx:
         image: nginx:mainline
