@@ -19,9 +19,15 @@ COPY .docker/wp-config.php /usr/src/wordpress
 VOLUME /usr/src/wordpress
 WORKDIR /usr/src/wordpress
 
+# curl -iL https://github.com/wp-cli/wp-cli/releases/download/v1.1.0/wp-cli-1.1.0.phar.md5
+ENV WPCLI_VERSION 1.1.0
+ENV WPCLI_MD5 5044e6a5e589c786d6e792825bd8fb4a
+
 # Install wp-cli
-RUN curl -o /usr/local/bin/wp -SL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli-nightly.phar \
-	&& chmod +x /usr/local/bin/wp
+RUN set -ex; \
+	curl -o /usr/local/bin/wp -SL https://github.com/wp-cli/wp-cli/releases/download/v${WPCLI_VERSION}/wp-cli-${WPCLI_VERSION}.phar && \
+	echo "$WPCLI_MD5 /usr/local/bin/wp" | md5sum -c - && \
+	chmod +x /usr/local/bin/wp
 
 RUN apt-get update && apt-get install -y mariadb-client && rm -rf /var/lib/apt/lists/*
 COPY .docker/install-multisite /usr/local/bin/install-multisite
