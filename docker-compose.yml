@@ -6,8 +6,24 @@ services:
             - mysql
             - memcached
         volumes:
+            - "./wp-content:/var/www/html/wp-content:ro"
+            - "./wp-config:/var/www/html/wp-config:ro"
+        environment:
+            WORDPRESS_DB_HOST: mysql:3306
+            WORDPRESS_DB_PASSWORD: wordpress
+            WORDPRESS_DB_NAME: wordpress
+            WORDPRESS_DB_USER: wordpress
+
+    wpcli:
+        build: .
+        command: /usr/local/bin/install-multisite
+        links:
+            - mysql
+            - memcached
+        volumes:
             - "./wp-content:/var/www/html/wp-content"
             - "./wp-config:/var/www/html/wp-config:ro"
+            - ".docker/install-multisite:/usr/local/bin/install-multisite:ro"
         environment:
             WORDPRESS_DB_HOST: mysql:3306
             WORDPRESS_DB_PASSWORD: wordpress

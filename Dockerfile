@@ -28,7 +28,3 @@ RUN set -ex; \
 	curl -o /usr/local/bin/wp -SL https://github.com/wp-cli/wp-cli/releases/download/v${WPCLI_VERSION}/wp-cli-${WPCLI_VERSION}.phar && \
 	echo "$WPCLI_MD5 /usr/local/bin/wp" | md5sum -c - && \
 	chmod +x /usr/local/bin/wp
-
-RUN apt-get update && apt-get install -y mariadb-client && rm -rf /var/lib/apt/lists/*
-COPY .docker/install-multisite /usr/local/bin/install-multisite
-CMD /usr/local/bin/install-multisite

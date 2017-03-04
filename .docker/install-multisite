@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt-get update; apt-get install --yes mariadb-client less
+
 function is_db_up() {
     RESULT=`mysql -h ${WORDPRESS_DB_HOST%:*} \
                   -P${WORDPRESS_DB_HOST#*:} \
@@ -35,5 +37,3 @@ if ! $(wp core is-installed --allow-root --path=/usr/src/wordpress); then
         --admin_email=${WP_EMAIL} \
         --skip-email
 fi
-
-php-fpm -F
