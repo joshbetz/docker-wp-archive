@@ -1,7 +1,14 @@
 <?php
 
-foreach( glob( '/var/www/html/wp-config/*.php' ) as $config )
+if ( file_exists( '/var/www/html/wp-config-local' ) ) {
+	foreach( glob( '/var/www/html/wp-config/*.php' ) as $config ) {
+		require( $config );
+	}
+}
+
+foreach( glob( '/var/www/html/wp-config/*.php' ) as $config ) {
 	require( $config );
+}
 
 define( 'DB_NAME', $_ENV['WORDPRESS_DB_NAME'] );
 define( 'DB_USER', $_ENV['WORDPRESS_DB_USER'] );
