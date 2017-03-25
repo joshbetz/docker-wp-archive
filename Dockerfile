@@ -15,7 +15,7 @@ RUN curl -L -o /tmp/memcached.tar.gz "https://github.com/php-memcached-dev/php-m
 
 COPY .docker/php.ini /usr/local/etc/php/conf.d/wordpress.ini
 
-COPY .docker/wp-config.php /usr/src/wordpress
+COPY ./wp-config.php /usr/src/wordpress
 VOLUME /usr/src/wordpress
 WORKDIR /usr/src/wordpress
 
