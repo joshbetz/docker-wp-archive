@@ -16,7 +16,7 @@ services:
 
     wpcli:
         build: .
-        command: /usr/local/bin/install-multisite
+        command: /usr/local/bin/wp info --allow-root
         links:
             - mysql
             - memcached
@@ -24,15 +24,11 @@ services:
             - php
         volumes:
             - "./wp-content:/var/www/html/wp-content"
-            - ".docker/install-multisite:/usr/local/bin/install-multisite:ro"
         environment:
             WORDPRESS_DB_HOST: mysql:3306
             WORDPRESS_DB_PASSWORD: wordpress
             WORDPRESS_DB_NAME: wordpress
             WORDPRESS_DB_USER: wordpress
-            WP_DOMAIN: localhost.localdomain:8000
-            WP_ADMIN_USER: wordpress
-            WP_EMAIL: wordpress@example.com
 
     nginx:
         image: nginx:mainline
