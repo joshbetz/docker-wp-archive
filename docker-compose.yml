@@ -6,8 +6,11 @@ services:
             - mysql
             - memcached
         volumes:
-            - "./wp-content:/var/www/html/wp-content:ro"
             - "./wp-config:/var/www/html/wp-config:ro"
+            - "./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins:ro"
+            - "./wp-content/uploads:/var/www/html/wp-content/uploads:ro"
+            - "./wp-content/sunrise.php:/var/www/html/wp-content/sunrise.php:ro"
+            - "./wp-content/object-cache.php:/var/www/html/wp-content/object-cache.php:ro"
         environment:
             WORDPRESS_DB_HOST: mysql:3306
             WORDPRESS_DB_PASSWORD: wordpress
