@@ -21,9 +21,7 @@ services:
             - mysql
             - memcached
         volumes_from:
-            - php
-        volumes:
-            - "./wp-content:/var/www/html/wp-content"
+            - php:ro
         environment:
             WORDPRESS_DB_HOST: mysql:3306
             WORDPRESS_DB_PASSWORD: wordpress
