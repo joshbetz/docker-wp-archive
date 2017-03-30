@@ -5,3 +5,6 @@ wp-config/secrets.php
 
 # Database
 .data
+
+# Docker override
+docker-compose.override.yml
