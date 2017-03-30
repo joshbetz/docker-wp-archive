@@ -2,6 +2,10 @@
 
 DIR=$(cd `dirname $0` && cd .. && pwd)
 
+cd $DIR/..
+git submodule update --init --recursive
+cd -
+
 case $1 in
 	'prod')
 		docker-compose -f $DIR/docker-compose.yml -f $DIR/docker-production.yml up -d --build
