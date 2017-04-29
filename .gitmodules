@@ -4,3 +4,18 @@
 [submodule "wp-content/mu-plugins/mercator"]
 	path = wp-content/mu-plugins/mercator
 	url = https://github.com/humanmade/Mercator.git
+[submodule "wp-content/mu-plugins/wp-user-activity"]
+	path = wp-content/mu-plugins/wp-user-activity
+	url = https://github.com/stuttter/wp-user-activity.git
+[submodule "wp-content/mu-plugins/wp-reset-filters"]
+	path = wp-content/mu-plugins/wp-reset-filters
+	url = https://github.com/stuttter/wp-reset-filters.git
+[submodule "wp-content/mu-plugins/wp-chosen"]
+	path = wp-content/mu-plugins/wp-chosen
+	url = https://github.com/stuttter/wp-chosen.git
+[submodule "wp-content/mu-plugins/wp-comment-humility"]
+	path = wp-content/mu-plugins/wp-comment-humility
+	url = https://github.com/stuttter/wp-comment-humility.git
+[submodule "wp-content/mu-plugins/wp-pretty-filters"]
+	path = wp-content/mu-plugins/wp-pretty-filters
+	url = https://github.com/stuttter/wp-pretty-filters.git
