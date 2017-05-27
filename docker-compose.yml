@@ -8,6 +8,8 @@ services:
         volumes:
             - "./wp-config:/var/www/html/wp-config:ro"
             - "./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins:ro"
+            - "../wp-content/plugins:/var/www/html/wp-content/plugins:ro"
+            - "../wp-content/themes:/var/www/html/wp-content/themes:ro"
             - "./wp-content/uploads:/var/www/html/wp-content/uploads:ro"
             - "./wp-content/sunrise.php:/var/www/html/wp-content/sunrise.php:ro"
             - "./wp-content/object-cache.php:/var/www/html/wp-content/object-cache.php:ro"
