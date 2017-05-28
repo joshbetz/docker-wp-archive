@@ -1,7 +1,7 @@
 wp-content/plugins
 wp-content/themes
 wp-content/uploads
-wp-config/secrets.php
+wp-config/000-secrets.php
 
 # Database
 .data
