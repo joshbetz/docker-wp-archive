@@ -3,6 +3,8 @@ wp-content/themes
 wp-content/uploads
 wp-config/000-secrets.php
 
+.production
+
 # Database
 .data
 
