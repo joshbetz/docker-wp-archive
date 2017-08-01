@@ -8,7 +8,7 @@ You can install WordPress by running the `bin/up` script. The `wp-content` direc
 
 ```
 mkdir wordpress.local && cd wordpress.local
-git clone --recursive https://github.com/joshbetz/docker-wp.git
+git clone --recursive git@github.com:joshbetz/docker-wp.git
 docker-wp/bin/up
 cd wp-content
 open http://localhost:8000
