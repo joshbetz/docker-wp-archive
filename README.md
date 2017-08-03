@@ -1,20 +1,29 @@
 # Docker WP
 
-## Getting Started
+## Prerequisites
 
-Before you can start, you'll need to [install Docker](https://docs.docker.com/engine/installation/).
+* Docker Engine
+* Docker Compose
+* Docker Machine
 
-You can install WordPress by running the `bin/up` script. The `wp-content` directory is mapped a level above the `docker-wp` root. This is to make it easier to use this repository as a dependency in another repo.
+These can be installed using your system's native package manager or from binaries/installers. See the [Docker docs](https://docs.docker.com/engine/installation/) for details.
+
+## Installation
+
+Clone this repo to the directory you want to use as the root of your site:
 
 ```
-mkdir wordpress.local && cd wordpress.local
-git clone --recursive https://github.com/joshbetz/docker-wp.git
-docker-wp/bin/up
-cd wp-content
-open http://localhost:8000
+git clone git@github.com:joshbetz/docker-wp.git my-site
+cd my-site
 ```
 
-Then you'll need to install a theme in `wp-content/themes` and set up WordPress.
+Make sure Docker is running then:
+
+```
+./bin/up
+```
+
+Once that completes, go to `http://localhost:8000/` to install WordPress.
 
 ## Upgrade WordPress
 
