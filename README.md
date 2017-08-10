@@ -13,7 +13,7 @@ These can be installed using your system's native package manager or from binari
 Clone this repo to the directory you want to use as the root of your site:
 
 ```
-git clone git@github.com:joshbetz/docker-wp.git my-site
+git clone git@github.com:joshbetz/docker-wp.git --recursive my-site
 cd my-site
 ```
 
