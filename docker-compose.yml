@@ -1,7 +1,7 @@
 version: '2'
 services:
     php:
-        build: .
+        image: joshbetz/wordpress
         links:
             - mysql
             - memcached
@@ -20,7 +20,7 @@ services:
             WORDPRESS_DB_USER: wordpress
 
     wpcli:
-        build: .
+        image: joshbetz/wordpress:cli
         command: /usr/local/bin/wp info --allow-root
         links:
             - mysql
