@@ -49,6 +49,8 @@ services:
 
     mysql:
         image: mariadb
+        volumes:
+            - ".data:/var/lib/mysql"
         environment:
             MYSQL_ROOT_PASSWORD: wordpress
             MYSQL_DATABASE: wordpress
