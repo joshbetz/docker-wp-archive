@@ -1,5 +1,20 @@
 version: '2'
 services:
+    nginx:
+        image: nginx:mainline
+        volumes:
+            - ".docker/nginx.template:/etc/nginx/conf.d/wordpress.template:ro"
+        volumes_from:
+            - php
+        links:
+            - php
+        ports:
+            - "8000:80"
+        command: /bin/bash -c "envsubst '$$NGINX_PORT' < /etc/nginx/conf.d/wordpress.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+        environment:
+            NGINX_PORT: 80
+        restart: always
+
     php:
         image: joshbetz/wordpress
         links:
@@ -15,13 +30,15 @@ services:
             - "./wp-content/object-cache.php:/var/www/html/wp-content/object-cache.php:ro"
         environment:
             WORDPRESS_DB_HOST: mysql:3306
-            WORDPRESS_DB_PASSWORD: wordpress
+            WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
             WORDPRESS_DB_NAME: wordpress
             WORDPRESS_DB_USER: wordpress
+            WP_PRODUCTION: ${WP_PRODUCTION}
+        restart: always
 
     wpcli:
         image: joshbetz/wordpress:cli
-        command: /usr/local/bin/wp info --allow-root
+        command: /usr/local/bin/wp shell --allow-root
         links:
             - mysql
             - memcached
@@ -29,33 +46,22 @@ services:
             - php
         environment:
             WORDPRESS_DB_HOST: mysql:3306
-            WORDPRESS_DB_PASSWORD: wordpress
+            WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
             WORDPRESS_DB_NAME: wordpress
             WORDPRESS_DB_USER: wordpress
+            WP_PRODUCTION: ${WP_PRODUCTION}
 
-    nginx:
-        image: nginx:mainline
-        volumes:
-            - ".docker/nginx.template:/etc/nginx/conf.d/wordpress.template:ro"
-        volumes_from:
-            - php
-        links:
-            - php
-        ports:
-            - "8000:80"
-        command: /bin/bash -c "envsubst '$$NGINX_PORT' < /etc/nginx/conf.d/wordpress.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
-        environment:
-            NGINX_PORT: 80
+    memcached:
+        image: memcached
+        restart: always
 
     mysql:
         image: mariadb
         volumes:
             - ".data:/var/lib/mysql"
         environment:
-            MYSQL_ROOT_PASSWORD: wordpress
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
             MYSQL_DATABASE: wordpress
             MYSQL_USER: wordpress
-            MYSQL_PASSWORD: wordpress
-
-    memcached:
-        image: memcached
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+        restart: always
