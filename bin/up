@@ -7,5 +7,11 @@ git submodule update --init --recursive
 docker-compose pull \
 	&& docker-compose stop php && docker-compose rm -v --force php wpcli nginx \
 	&& docker-compose up -d
+
+# Update all plugins
+./bin/wp --allow-root --url=betz.mx plugin update --all
+
+# Update all themes
+./bin/wp --allow-root --url=betz.mx theme update --all
 cd -
 
