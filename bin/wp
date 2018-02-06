@@ -3,5 +3,5 @@
 DIR=$(cd `dirname $0` && cd .. && pwd)
 
 cd $DIR
-docker-compose run --rm wpcli wp "$@"
+docker-compose run -u 0 --rm wpcli wp "$@"
 cd -
