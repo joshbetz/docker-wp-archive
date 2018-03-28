@@ -25,6 +25,15 @@ server {
 		include        fastcgi_params;
 	}
 
+	location /_static/ {
+		add_header Cache-Control "public";
+		expires 1M;
+
+		fastcgi_pass   php:9000;
+		include        fastcgi_params;
+		fastcgi_param SCRIPT_FILENAME /var/www/html/wp-content/mu-plugins/nginx-http-concat/ngx-http-concat.php;
+	}
+
 	location ~ ^/wp-content/(.*)$ {
 		alias /var/www/html/wp-content/$1;
 		add_header Cache-Control "public";
