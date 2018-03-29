@@ -21,4 +21,4 @@
 	url = https://github.com/stuttter/wp-pretty-filters.git
 [submodule "wp-content/mu-plugins/nginx-http-concat"]
 	path = wp-content/mu-plugins/nginx-http-concat
-	url = git@github.com:Automattic/nginx-http-concat.git
+	url = https://github.com/Automattic/nginx-http-concat.git
