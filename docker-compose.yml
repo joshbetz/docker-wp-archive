@@ -65,3 +65,8 @@ services:
             MYSQL_USER: wordpress
             MYSQL_PASSWORD: ${DB_PASSWORD}
         restart: always
+
+    smtp:
+        image: namshi/smtp
+        environment:
+            MAILNAME: ${MAILNAME}
